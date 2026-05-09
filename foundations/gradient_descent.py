@@ -9,4 +9,4 @@ class Solution:
             x = x - learning_rate * 2 * x
 
         return round(x, 5)
-        pass
+       
