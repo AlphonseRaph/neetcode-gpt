@@ -17,6 +17,7 @@ class Solution:
         loss = y_hat - y_true
         # derivative of sigmoid
         sig_deriv = y_hat * (1 - y_hat)
+        # delta
         delta = sig_deriv * loss
         # blaming specific weights (dL/dw)
         dL_dw = delta * x
