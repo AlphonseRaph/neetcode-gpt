@@ -21,7 +21,7 @@ class Solution:
         # blaming specific weights (dL/dw)
         dL_dw = delta * x
         # blaming bias (dL/db)
-        dL_db = delta * 1 
+        dL_db = delta  
         # Forward: z = dot(x, w) + b, y_hat = sigmoid(z)
         # Loss: L = 0.5 * (y_hat - y_true)^2
         # Return: (dL_dw rounded to 5 decimals, dL_db rounded to 5 decimals)
