@@ -32,9 +32,9 @@ class Solution:
         # dL/dz  (chain rule) / delta
         dL_dz = dyhat_dz * dL_dyhat
         # blaming specific weights 
-        # dL/dw
+        # dL/dw (dl/dw = dl/dz * dz/dw) (dz/dw = x) (z=xw+b)
         dL_dw = dL_dz * x
-        # blaming bias (dL/db)
+        # blaming bias (dL/db)(dL/db = dL/dz * dz/db) (dz/db = 1) (z=xw+b)
         dL_db = dL_dz 
 
 
