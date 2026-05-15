@@ -14,4 +14,4 @@ class Solution:
 
         x_hat = X/rms * G
 
-        return np.round(x_hat, 4)
+        return np.round(x_hat, 4).tolist()
