@@ -10,7 +10,7 @@ class Solution:
         X = np.array(x)
         G = np.array(gamma)
 
-        rms = np.sqrt(np.mean(X**2 + eps))
+        rms = np.sqrt(np.dot(X, X) / X.size + eps)
 
         x_hat = X/rms * G
 
