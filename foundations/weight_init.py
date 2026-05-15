@@ -56,17 +56,19 @@ class Solution:
         
         # 3. FORWARD PASS
         stds = []
-        for i in range(num_layers):
-            # Grab the pre-generated weights for this layer
-            z = weights_list[i] @ x
-            
-            # Apply ReLU for hidden layers 
-            #( they said no activation for output layer,
-            # but auto-grader is expecting you to apply ReLU to every single layer in the loop
-            # so it can test if Kaiming initialization properly stabilizes the variance across all of them.
-            x = torch.relu(z)
+        # disabling grads because we are only intersted in getting std of activations of each layer
+        with torch.no_grad():
+            for i in range(num_layers):
+                # Grab the pre-generated weights for this layer
+                z = weights_list[i] @ x
                 
-            # Calculate standard deviation of activations and store
-            stds.append(round(x.std().item(), 2))
+                # Apply ReLU for hidden layers 
+                #( they said no activation for output layer,
+                # but auto-grader is expecting you to apply ReLU to every single layer in the loop
+                # so it can test if Kaiming initialization properly stabilizes the variance across all of them.
+                x = torch.relu(z)
+                    
+                # Calculate standard deviation of activations and store
+                stds.append(round(x.std().item(), 2))
             
         return stds
