@@ -29,6 +29,9 @@ class Solution:
         # Return the std of activations after each layer, rounded to 2 decimals.
         torch.manual_seed(0)
 
+        # OPTIMIZATION 1: Hoist the string check outside the loop
+        is_xavier = (init_type == "xavier")
+        is_kaiming = (init_type == "kaiming")
 
        # 1. INITIALIZE MODEL WEIGHTS FIRST
         weights_list = []
@@ -36,9 +39,10 @@ class Solution:
             fan_in = input_dim if i == 0 else hidden_dim
             fan_out = hidden_dim
             
-            if init_type == "xavier":
+            # Now we just check fast boolean flags instead of strings
+            if is_xavier:
                 std = (2 / (fan_in + fan_out)) ** 0.5
-            elif init_type == "kaiming":
+            elif is_kaiming:
                 std = (2 / fan_in) ** 0.5
             else:
                 std = 1.0 # Fallback
