@@ -28,8 +28,7 @@ class Solution:
         padded_dataset = nn.utils.rnn.pad_sequence(
             encoded_tensors,
             batch_first=True, 
-            padding_value=0, 
-            padding_side='right'
+            padding_value=0,
         )
 
         return padded_dataset
