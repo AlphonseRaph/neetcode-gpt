@@ -29,7 +29,6 @@ class Solution:
             encoded_tensors,
             batch_first=True, 
             padding_value=0, 
-            padding_side='right'
         )
 
         return padded_dataset
